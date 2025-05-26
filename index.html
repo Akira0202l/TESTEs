@@ -4,20 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Estilo do tema (será trocado via JavaScript) -->
     <link id="theme-style" rel="stylesheet" href="SiteD.css">
-
-    <!-- Estilo do carrossel -->
     <link rel="stylesheet" href="carousel.css">
-
+    <script src="index.js"></script>
     <title>AlugaCar | AC</title>
 </head>
 <body>
-
-    <!-- Botão para alternar o tema do site (claro/escuro) -->
     <button onclick="toggleTheme()" id="toggle-btn" title="Trocar tema">
-        <!-- Ícone de Sol (tema claro) -->
         <svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <defs>
                 <radialGradient id="sunGradient" cx="50%" cy="50%" r="50%">
@@ -38,61 +31,6 @@
             </g>
         </svg>
     </button>
-
-    <!-- Script para alternar o tema -->
-    <script>
-        function toggleTheme() {
-            const link = document.getElementById('theme-style');
-            const currentTheme = link.getAttribute('href');
-            const body = document.body;
-            const btn = document.getElementById('toggle-btn');
-            body.classList.toggle('dark-theme');
-
-            // Alterna para o tema claro
-            if (currentTheme === 'SiteD.css') {
-                link.setAttribute('href', 'SiteL.css');
-                btn.innerHTML = `
-                    <!-- Ícone de Lua -->
-                    <svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <radialGradient id="moonGradient" cx="50%" cy="50%" r="50%">
-                                <stop offset="0%" stop-color="#B0C4DE"/>
-                                <stop offset="100%" stop-color="#708090"/>
-                            </radialGradient>
-                        </defs>
-                        <path fill="url(#moonGradient)" d="M21 12.79A9 9 0 0111.21 3 7 7 0 0012 21a9 9 0 009-8.21z"/>
-                    </svg>
-                `;
-            } else {
-                // Retorna para o tema escuro
-                link.setAttribute('href', 'SiteD.css');
-                btn.innerHTML = `
-                    <!-- Ícone de Sol -->
-                    <svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <radialGradient id="sunGradient" cx="50%" cy="50%" r="50%">
-                                <stop offset="0%" stop-color="#FFD93B"/>
-                                <stop offset="100%" stop-color="#FFA500"/>
-                            </radialGradient>
-                        </defs>
-                        <circle cx="12" cy="12" r="5" fill="url(#sunGradient)"/>
-                        <g stroke="#FFA500" stroke-width="2">
-                            <line x1="12" y1="1" x2="12" y2="3"/>
-                            <line x1="12" y1="21" x2="12" y2="23"/>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-                            <line x1="1" y1="12" x2="3" y2="12"/>
-                            <line x1="21" y1="12" x2="23" y2="12"/>
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-                        </g>
-                    </svg>
-                `;
-            }
-        }
-    </script>
-
-    <!-- Cabeçalho do site -->
     <header>
         <div class="box-img-header">
             <img class="img-logo" src="./images/logo.png" alt="Logo AlugaCar">
@@ -108,13 +46,9 @@
         <div class="box-btn-actions">
         <a href="Login.html" class="btn-action link-action">Entrar</a>
         <a href="Cadastro.html" class="btn-action link-action">Cadastrar</a>
-
         </div>
     </header>
-
-    <!-- Conteúdo principal -->
     <main>
-        <!-- Primeira seção (boas-vindas) -->
         <section class="first-section">
             <div>
                 <h1>Olá! Bem-vindo à <br><strong>AlugaCar</strong></h1>
@@ -125,8 +59,6 @@
                 <img class="img-profile" src="./images/perfil.png" alt="AlugaCar - Perfil">
             </div>
         </section>
-
-        <!-- Segunda seção (carrossel de veículos) -->
         <section id="experiences" class="second-section">
             <div class="carousel-container">
                 <img id="carousel-image" src="./images/pcx.png" alt="Imagem do Carrossel">
@@ -135,47 +67,6 @@
                 <button id="next" class="nav-button">&#10095;</button>
             </div>
         </section>
-
-        <!-- Script do carrossel -->
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                const images = [
-                    { src: "./images/pcx.png", text: "Texto para a primeira imagem" },
-                    { src: "./images/civic.png", text: "Texto para a segunda imagem" },
-                    { src: "./images/ranger.png", text: "Texto para a terceira imagem" }
-                ];
-
-                let currentIndex = 0;
-                const imgElement = document.getElementById("carousel-image");
-                const textElement = document.getElementById("carousel-text");
-                const prevButton = document.getElementById("prev");
-                const nextButton = document.getElementById("next");
-
-                function updateImage() {
-                    imgElement.src = images[currentIndex].src;
-                    textElement.textContent = images[currentIndex].text;
-                }
-
-                nextButton.addEventListener("click", function () {
-                    currentIndex = (currentIndex + 1) % images.length;
-                    updateImage();
-                });
-
-                prevButton.addEventListener("click", function () {
-                    currentIndex = (currentIndex - 1 + images.length) % images.length;
-                    updateImage();
-                });
-
-                setInterval(() => {
-                    currentIndex = (currentIndex + 1) % images.length;
-                    updateImage();
-                }, 3000);
-
-                updateImage();
-            });
-        </script>
-
-        <!-- Terceira seção (quem somos) -->
         <section id="who-am-i" class="third-section">
             <h2 class="title">Quem Somos Nós?</h2>
             <div>
@@ -187,17 +78,12 @@
                 </p>
             </div>
         </section>
-
-        <!-- Quarta seção (projetos) -->
         <section id="my-projects" class="fourth-section">
             <h2 class="title">Nossos Projetos</h2>
             <img src="https://i.gifer.com/YlWC.gif" alt="Carregando..." width="100">
             <div id="projetos"></div>
         </section>
     </main>
-
-    <!-- Rodapé (contato/redes sociais) -->
-
     <footer id="contact">
     <h2 class="title">Contato</h2>      
     <div>
@@ -222,7 +108,6 @@
             </svg>
         </a>
         </div>
-
         <div class="box-btn-actions">
         <a href="LoginADM.html" class="btn-action link-action">Trabalha Conosco?</a>
     </div>

@@ -4,20 +4,19 @@
     max-width: 800px;
     height: 300px;
     object-fit: cover;
-
 }
 
 .carousel-content {
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Garante que a imagem e o texto comecem na mesma linha */
+    justify-content: flex-start;
     width: 100%;
 }
 
 #carousel-image {
-    width: 60%; /* Mantém a largura da imagem */
-    height: 100%; /* Garante que a imagem ocupe toda a altura do container */
-    object-fit: cover; /* Garante que a imagem ocupe totalmente a área */
+    width: 60%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 10px;
 }
 
@@ -32,7 +31,6 @@
     overflow-wrap: break-word;
 }
 
-/* Botões de navegação */
 .nav-button {
     position: absolute;
     top: 50%;
@@ -59,7 +57,6 @@
     transform: translateY(-50%) scale(1.1);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
-
 
 #prev {
     left: -5px;
